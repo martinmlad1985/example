@@ -1,0 +1,18 @@
+.content{
+    display: grid;
+    grid-template-columns: 2fr 15fr;
+}
+
+.names{
+    color: #194fff;
+    background-color: #d6fff7;
+}
+
+.talks{
+    color: #ff7f13;
+    background-color: #fbd1ff;
+}
+
+.item{
+    color: gold;
+}

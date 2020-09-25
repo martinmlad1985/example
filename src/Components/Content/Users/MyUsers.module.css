@@ -1,0 +1,18 @@
+.example{
+    color: #e06719;
+    background-color: #b6e0b8;
+}
+
+.span{
+    padding: 10px;
+    font-family: Bahnschrift;
+}
+
+.userPhoto {
+    width: 100px;
+    height: 100px;
+}
+
+.active{
+    font-weight: bold;
+}

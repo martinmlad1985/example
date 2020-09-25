@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import "./App.css";
+import Navbar from "./Components/Navbar/Navbar";
+// import Content from "./Components/Content/Content";
+import HeaderContainer from "./Components/Header/HeaderContainer";
+import {connect} from "react-redux";
+import {initializeThunkCreator} from "./Redux/AppReducer";
+import Preloader from "./Components/Preloader/Preloader";
+import {withRouter} from "react-router-dom";
+import {compose} from "redux";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const Content = React.lazy(() => import('./Components/Content/Content'));
+
+class App extends Component {
+  componentDidMount() {
+    this.props.initializeThunkCreator();
+  }
+
+  render() {
+
+    if (!this.props.initialStatus) {
+      return (
+          <div>
+            <Preloader/>
+          </div>
+      )
+    }
+
+    return (
+        <div className="wrapper">
+          <HeaderContainer/>
+          <Navbar/>
+          <React.Suspense fallback={<div>Загрузка...</div>}>
+            <Content/>
+          </React.Suspense>
+        </div>
+    )
+  }
 }
 
-export default App;
+let mapStateToProps = (props) => {
+  return {
+    initialStatus: props.AppReducer.initialStatus
+  }
+}
+
+export default compose(
+    withRouter,
+    connect(mapStateToProps, {initializeThunkCreator}))(App);
