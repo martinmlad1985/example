@@ -1,8 +1,7 @@
 import * as React from "react";
-import * as axios from "axios";
 import {connect} from "react-redux";
 import {
-    ChangePostttCreator,
+    ChangePostttCreator, getProfileDataTC,
     getStatusThunkCreator,
     getUserProfile,
     updateStatusThunkCreator
@@ -20,28 +19,19 @@ class MyPostsContainer extends React.Component {
         if (!userId) {
             userId = this.props.myId;
         }
-
-        axios.get('https://social-network.samuraijs.com/api/1.0//profile/' + userId,{
-            withCredentials: true,
-            headers: {
-                "API-KEY": "38520b65-cddd-4424-aaa9-b045804c3b92"
-            }
-        }).then(response => {
-            this.props.getUserProfile(response.data);
-        })
+        this.props.getProfileDataTC(userId);
         this.props.getStatusThunkCreator(userId);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
 
-        let a = nextProps != this.props;
-        let b = nextState != this.state;
-        let c= a ||b;
+        let a = nextProps !== this.props;
+        let b = nextState !== this.state;
+        let c= a||b;
         return c;
     }
 
     render() {
-        console.log('render');
         return <MyPosts {...this.props}   />
     }
 }
@@ -60,7 +50,7 @@ let mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps, {
         getUserProfile, ChangePostttCreator,
-        getStatusThunkCreator, updateStatusThunkCreator
+        getStatusThunkCreator, updateStatusThunkCreator, getProfileDataTC
     }),
     withRouter,
     withAuthRedirect

@@ -20,7 +20,7 @@ let Paginator = (props) => {
 
             {pages
                 .filter(p=> p>= leftLimit&& p<= rightLimit).map(p=>{
-                    return <span className={props.currentPage === p ? s.active : ''}
+                    return <span  className={props.currentPage === p ? s.active : ''}
                                  onClick={() => props.onChangePage(p)}>{p+ ' '}</span>
                 })
 
@@ -28,10 +28,7 @@ let Paginator = (props) => {
             {currentPart<part && <button onClick={()=> {setCurrentPart(currentPart + 1)}}> next </button>}
         </div>
     )
-    // {pages.map(p => {
-    //     return <span className={props.currentPage === p ? s.active : ''}
-    //                  onClick={() => props.onChangePage(p)}>{p} </span>
-    // })}
+
 }
 
 

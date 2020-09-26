@@ -21,10 +21,10 @@ const Message = (props) => {
 const MyDialogs = (props) => {
 
     let arrElem = props.arrName.map(elem => {
-        return <Dialog name={elem.name} id={elem.id}/>
+        return <Dialog key={elem.name.toString()} name={elem.name} id={elem.id}/>
     })
     let arrElemMessage = props.arrMessage.map(elem => {
-        return <Message message={elem.message}/>
+        return <Message key={elem.message.toString()} message={elem.message}/>
     })
     let addMessage= ()=>{
         props.getDispatchForAddMessage();

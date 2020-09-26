@@ -1,49 +1,21 @@
 import React from "react";
 import {connect} from "react-redux";
-import {
-    setUsers, setCurrentPage, setUsersTotalCount,
-    setIsFetching, buttonUnfollowThunkCreator, buttonFollowThunkCreator
-} from "../../../Redux/MyUsersReducer";
+import {getUsersListTC, buttonUnfollowThunkCreator, buttonFollowThunkCreator} from "../../../Redux/MyUsersReducer";
 import MyUsers from "./MyUsers";
-import * as axios from "axios";
 import Preloader from "../../Preloader/Preloader";
 import {
-    getCurrentPage,
-    getIsFetching, getIsFollowing,
-    getPageSize,
-    getTotalUsersCount,
-    getUsersData
+    getCurrentPage, getIsFetching, getIsFollowing,
+    getPageSize, getTotalUsersCount, getUsersData
 } from "../../../Redux/users-selector";
 
 
 class MyUsersAPIComponent extends React.Component {
     componentDidMount() {
-        this.props.setIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
-            withCredentials: true,
-            headers: {
-                "API-KEY": "38520b65-cddd-4424-aaa9-b045804c3b92"
-            }
-        }).then(response => {
-            this.props.setIsFetching(false);
-            this.props.setUsers(response.data.items);
-            this.props.setUsersTotalCount(response.data.totalCount);
-
-        })
+        this.props.getUsersListTC(this.props.currentPage, this.props.pageSize)
     }
 
     onChangePage = (pageNumber) => {
-        this.props.setIsFetching(true);
-        this.props.setCurrentPage(pageNumber);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
-            withCredentials: true,
-            headers: {
-                "API-KEY": "38520b65-cddd-4424-aaa9-b045804c3b92"
-            }
-        }).then(response => {
-            this.props.setIsFetching(false);
-            this.props.setUsers(response.data.items);
-        })
+        this.props.getUsersListTC(pageNumber, this.props.pageSize)
     }
 
     render() {
@@ -76,10 +48,8 @@ let mapStateToProps = (state) => {
     }
 }
 
-const MyUsersContainer2 = connect(mapStateToProps, {
-    setUsers, setCurrentPage, setUsersTotalCount, setIsFetching,
-    buttonUnfollowThunkCreator, buttonFollowThunkCreator
-})(MyUsersAPIComponent);
+const MyUsersContainer2 = connect(mapStateToProps,
+    {buttonUnfollowThunkCreator, buttonFollowThunkCreator, getUsersListTC})(MyUsersAPIComponent);
 
 
 export default MyUsersContainer2;

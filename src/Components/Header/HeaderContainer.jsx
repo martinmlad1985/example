@@ -4,9 +4,6 @@ import {connect} from "react-redux";
 import {getUserDataThunkCreator, sendLogoutCreator} from "../../Redux/AuthReduser";
 
 class HeaderContainer extends React.Component {
-    // componentDidMount() {
-    //     this.props.getUserDataThunkCreator();
-    // }
 
     render() {
         return (

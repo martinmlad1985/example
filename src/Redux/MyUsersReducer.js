@@ -120,7 +120,14 @@ export let buttonFollowThunkCreator= (userId)=> (dispatch) => {
         })
     }
 
-
+export const getUsersListTC= (currentPage, pageSize)=> (dispatch)=> {
+    dispatch(setIsFetching(true));
+    usersAPI.getUsersList(currentPage, pageSize).then(response=> {
+        dispatch(setIsFetching(false));
+        dispatch(setUsers(response.data.items));
+        dispatch(setUsersTotalCount(response.data.totalCount));
+    })
+}
 
 
 

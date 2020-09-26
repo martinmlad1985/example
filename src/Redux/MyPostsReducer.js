@@ -1,5 +1,4 @@
-import {profileAPI, usersAPI} from "../API/API";
-import {disableButton, follow} from "./MyUsersReducer";
+import {profileAPI} from "../API/API";
 
 const CHANGE_POSTTT = 'CHANGE-POSTTT';
 const GET_USER_PROFILE = 'GET_USER_PROFILE';
@@ -64,6 +63,11 @@ export let updateStatusThunkCreator = (status) =>  (dispatch) => {
             }
         })
     }
+export const getProfileDataTC= (userId) => (dispatch) => {
+    profileAPI.profileData(userId).then(response =>{
+          dispatch(getUserProfile(response.data));
+    })
+}
 
 
 

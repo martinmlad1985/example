@@ -30,6 +30,9 @@ export const usersAPI = {
     },
     follow(userId) {
       return  instance.post(`follow/` + userId)
+    },
+    getUsersList(currentPage, pageSize){
+       return instance.get(`users?page=${currentPage}&count=${pageSize}`)
     }
 }
 
@@ -41,6 +44,8 @@ export const profileAPI = {
        return instance.put(`profile/status`, {
            status: status
        })
-
-   }
+   },
+    profileData(userId){
+       return instance.get(`profile/${userId}`)
+    }
 }

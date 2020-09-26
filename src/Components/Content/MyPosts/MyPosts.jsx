@@ -1,7 +1,6 @@
 import React from "react";
 import c from "./MyPosts.module.css";
 import Preloader from "../../Preloader/Preloader";
-//import Status from "./Status/Status";
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../Utils/Validator";
 import {Textarea} from "../../Utils/ControlForms";
@@ -37,7 +36,7 @@ const PostReduxForm = reduxForm({form: 'PostForm'})(PostForm);
 const MyPosts =  (props) => {
 
     let result = props.arrPosts.map(elem => {
-        return <Post qqq={elem}/>
+        return <Post key={elem.toString()} qqq={elem}/>
     });
     if (!props.userProfile) {
         return <Preloader/>
@@ -49,7 +48,7 @@ const MyPosts =  (props) => {
 
         <div className={c.content}>
 
-            <img src={props.userProfile.photos.large}/>
+            <img src={props.userProfile.photos.large} alt="qqq"/>
             <StatusWithHOOK status={props.status} updateStatus={props.updateStatusThunkCreator}/>
 
             <PostReduxForm onSubmit={onSubmit}/>
