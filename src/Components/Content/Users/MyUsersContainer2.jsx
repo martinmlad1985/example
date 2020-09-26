@@ -20,7 +20,10 @@ class MyUsersAPIComponent extends React.Component {
     componentDidMount() {
         this.props.setIsFetching(true);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
-            withCredentials: true
+            withCredentials: true,
+            headers: {
+                "API-KEY": "38520b65-cddd-4424-aaa9-b045804c3b92"
+            }
         }).then(response => {
             this.props.setIsFetching(false);
             this.props.setUsers(response.data.items);
@@ -33,7 +36,10 @@ class MyUsersAPIComponent extends React.Component {
         this.props.setIsFetching(true);
         this.props.setCurrentPage(pageNumber);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
-            withCredentials: true
+            withCredentials: true,
+            headers: {
+                "API-KEY": "38520b65-cddd-4424-aaa9-b045804c3b92"
+            }
         }).then(response => {
             this.props.setIsFetching(false);
             this.props.setUsers(response.data.items);
