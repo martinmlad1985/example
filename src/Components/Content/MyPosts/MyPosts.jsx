@@ -14,9 +14,9 @@ const Post = (props) => {
     )
 }
 
-const maxLength15= maxLengthCreator(15);
+const maxLength15 = maxLengthCreator(15);
 const PostForm = (props) => {
-       return (
+    return (
         <form onSubmit={props.handleSubmit}>
             <div>
                 <Field name={'PostTextareaValue'}
@@ -33,7 +33,7 @@ const PostForm = (props) => {
 }
 const PostReduxForm = reduxForm({form: 'PostForm'})(PostForm);
 
-const MyPosts =  (props) => {
+const MyPosts = (props) => {
 
     let result = props.arrPosts.map(elem => {
         return <Post key={elem.toString()} qqq={elem}/>
@@ -49,7 +49,22 @@ const MyPosts =  (props) => {
         <div className={c.content}>
 
             <img src={props.userProfile.photos.large} alt="qqq"/>
-            <StatusWithHOOK status={props.status} updateStatus={props.updateStatusThunkCreator}/>
+            <div>
+                <span>My status:  </span><StatusWithHOOK status={props.status} updateStatus={props.updateStatusThunkCreator}/>
+            </div>
+            <div>
+                <span>About me:  </span><span>{props.userProfile.aboutMe}</span>
+            </div>
+            <div>
+                <span>FullName:  </span><span>{props.userProfile.fullName}</span>
+            </div>
+            <div>
+                <span>lookingForAJob:  </span><span>{props.userProfile.lookingForAJob}</span>
+            </div>
+            <div>
+                <span>lookingForAJobDescription:  </span><span>{props.userProfile.lookingForAJobDescription}</span>
+            </div>
+
 
             <PostReduxForm onSubmit={onSubmit}/>
 
