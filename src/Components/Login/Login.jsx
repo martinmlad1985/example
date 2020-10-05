@@ -2,7 +2,7 @@ import React from "react";
 import {Field, reduxForm} from "redux-form";
 import {Input} from "../Utils/ControlForms";
 import {required} from "../Utils/Validator";
-import {sendLoginCreator} from "../../Redux/AuthReduser";
+import {sendLoginCreator} from "../../Redux/AuthReducer";
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
 
