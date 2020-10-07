@@ -10,10 +10,10 @@ let Login = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder={'email'} name={'email'} component={Input} validate={required}/>
+                <Field placeholder={'email'} name={'email'} component={Input} validate={required}/> Введите тестовый Email: free@samuraijs.com
             </div>
             <div>
-                <Field placeholder={'Password'} name={'password'} component={Input} validate={required} type={'password'}/>
+                <Field placeholder={'Password'} name={'password'} component={Input} validate={required} type={'password'}/> Введите тестовый пароль: free
             </div>
             <div>
                 <Field type={'checkbox'} name={'rememberMe'} component={Input}/> remember
