@@ -1,8 +1,10 @@
 .header{
     grid-area: h;
     background-color: turquoise;
+    margin-bottom: 3px;
+    border-radius: 5px;
 }
 
 .login{
-    float: right;
+    margin: 10px;
 }

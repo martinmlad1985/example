@@ -32,7 +32,7 @@ export let disableButton = (result, userId) => {
 
 let initialState = {
     users: [],
-    pageSize: 40,
+    pageSize: 15,
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: false,

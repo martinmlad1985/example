@@ -1,10 +1,11 @@
 import React from "react";
-import c from "./MyPosts.module.css";
+import s from "./MyPosts.module.css";
 import Preloader from "../../Preloader/Preloader";
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../Utils/Validator";
 import {Textarea} from "../../Utils/ControlForms";
 import StatusWithHOOK from "./Status/StatusWithHOOK";
+import image from "../../../assets/images/image.png";
 
 const Post = (props) => {
     return (
@@ -46,9 +47,9 @@ const MyPosts = (props) => {
     }
     return (
 
-        <div className={c.content}>
+        <div className={s.wrapper}>
 
-            <img src={props.userProfile.photos.large} alt="qqq"/>
+            <img src={props.userProfile.photos.large || image} alt="no photo" className={s.photo}/>
             <div>
                 <span>My status:  </span><StatusWithHOOK status={props.status} updateStatus={props.updateStatusThunkCreator}/>
             </div>

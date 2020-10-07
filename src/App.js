@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import "./App.css";
+import s from"./App.module.css";
 import Navbar from "./Components/Navbar/Navbar";
-// import Content from "./Components/Content/Content";
 import HeaderContainer from "./Components/Header/HeaderContainer";
 import {connect} from "react-redux";
 import {initializeThunkCreator} from "./Redux/AppReducer";
@@ -27,7 +26,7 @@ class App extends Component {
     }
 
     return (
-        <div className="wrapper">
+        <div className= {s.wrapper}>
           <HeaderContainer/>
           <Navbar/>
           <React.Suspense fallback={<div>Загрузка...</div>}>

@@ -7,7 +7,6 @@ import Users from "./Users/Users";
 const Navbar= ()=> {
     return (
         <div className= {c.navbar}>
-            Navbar
             <MyPage/>
             <MyMessage/>
             <Users/>

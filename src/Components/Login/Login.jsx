@@ -43,7 +43,7 @@ let LoginFull = (props) => {
     }
     
     return (
-        <div>
+        <div >
             <h3>Login</h3>
             <ReduxFormLogin onSubmit={onSubmit}/>
         </div>

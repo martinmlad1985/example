@@ -2,5 +2,8 @@
     grid-area: n;
     background-color: #20e087;
     color: red;
+    margin-right: 3px;
+    border-radius: 5px;
+    padding-left: 20px;
 }
 

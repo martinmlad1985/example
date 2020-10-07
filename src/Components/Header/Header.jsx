@@ -8,7 +8,6 @@ const Header= (props)=> {
     }
     return (
         <div className= {c.header}>
-            Header
             <div className={c.login}>
             { props.isAuth
                 ?<div>{props.login}  <button onClick={logout}>Logout</button></div>

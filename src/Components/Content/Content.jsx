@@ -9,7 +9,6 @@ import Login from "../Login/Login";
 const Content = (props) => {
      return (
         <div className={c.content}>
-            Content
             <Route path="/dialogs" render= {() => <MyDialogsContainer />}
             />
 
