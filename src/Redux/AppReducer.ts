@@ -23,13 +23,11 @@ let AppReducer = (state = initialState, action: any): InitialStateType => {
             return state
     }
 }
+type InitializeType= {type: typeof INITIALIZE}
+const initialize = (): InitializeType =>  ({type: INITIALIZE})
 
-let initialize = () => {
-    return {type: INITIALIZE};
-}
-
-export let initializeThunkCreator = () => (dispatch: any) => {
-    let promise = dispatch(getUserDataThunkCreator());
+export const initializeThunkCreator = () => (dispatch: any) => {
+    const promise = dispatch(getUserDataThunkCreator());
     Promise.all([promise])
         .then(() => {
             dispatch(initialize());
